@@ -1,0 +1,5 @@
+fun String.toLowercaseString(): String=this.lowercase()
+
+fun main() {
+    println("HOLA A TODOS".toLowercaseString())
+}
