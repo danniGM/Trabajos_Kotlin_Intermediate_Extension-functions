@@ -1,0 +1,29 @@
+import kotlin.system.currentTimeMillis
+
+fun main() {
+    val tiempoInicio = System.currentTimeMillis()
+
+    val datos = mutableListOf<Int>()
+    for (i in 0..999) {
+        datos.add(i * 2)
+    }
+
+    val datosFiltrados = mutableListOf<Int>()
+    for (numero in datos) {
+        if (numero % 3 == 0) {
+            datosFiltrados.add(numero)
+        }
+    }
+
+    val datosProcesados = mutableListOf<Int>()
+    for (numero in datosFiltrados) {
+        datosProcesados.add(numero / 2)
+    }
+
+    println("Processed data")
+
+    val tiempoFinal = System.currentTimeMillis()
+    val tiempoTotal = tiempoFinal - tiempoInicio
+
+    println("Time taken: " + tiempoTotal + " ms")
+}
