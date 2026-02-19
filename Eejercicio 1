@@ -1,0 +1,35 @@
+sealed class DeliveryStatus {
+    data class Pending(val sender: String) : DeliveryStatus()
+    data class InTransit(val estimatedDeliveryDate: String) : DeliveryStatus()
+    data class Delivered(val deliveryDate: String, val recipient: String) : DeliveryStatus()
+    data class Canceled(val reason: String) : DeliveryStatus()
+}
+
+fun printDeliveryStatus(status: DeliveryStatus) {
+    when (status) {
+        is DeliveryStatus.Pending -> {
+            println("EL pauqete aun no es recogido}.")
+        }
+        is DeliveryStatus.InTransit -> {
+            println("EL paquete esta en camino, y se dirige hasta a ti ${status.estimatedDeliveryDate}.")
+        }
+        is DeliveryStatus.Delivered -> {
+            println("El paquete fue dirigido a ${status.recipient} on ${status.deliveryDate}.")
+        }
+        is DeliveryStatus.Canceled -> {
+            println("El envio fue canselado para: ${status.reason}.")
+        }
+    }
+}
+
+fun main() {
+    val status1: DeliveryStatus = DeliveryStatus.Pending("Fani")
+    val status2: DeliveryStatus = DeliveryStatus.InTransit("2024-11-20")
+    val status3: DeliveryStatus = DeliveryStatus.Delivered("2024-11-18", "Dani")
+    val status4: DeliveryStatus = DeliveryStatus.Canceled("Direción no encontrada")
+
+    printDeliveryStatus(status1)
+    printDeliveryStatus(status2)
+    printDeliveryStatus(status3)
+    printDeliveryStatus(status4)
+}
