@@ -1,0 +1,10 @@
+import kotlin.ExperimentalStdlibApi
+
+@OptIn(ExperimentalStdlibApi::class)
+fun probarNuevaFuncion() {
+    println("Probando la API experimental")
+}
+
+fun main() {
+    probarNuevaFuncion()
+}
