@@ -1,0 +1,20 @@
+import kotlin.math.*
+
+fun calcularInteresCompuesto(capital: Double, tasa: Double, vecesAlAño: Int, años: Int): Double {
+    val base = 1 + (tasa / vecesAlAño)
+    val exponente = vecesAlAño * años
+    val resultado = capital * base.pow(exponente)
+    
+    return resultado
+}
+
+fun main() {
+    val capitalInicial = 1000.0
+    val tasaInteres = 0.05
+    val vecesInteresAlAño = 4
+    val cantidadAños = 5
+    
+    val montoFinal = calcularInteresCompuesto(capitalInicial, tasaInteres, vecesInteresAlAño, cantidadAños)
+    
+    println("The accumulated amount is: " + montoFinal)
+}
