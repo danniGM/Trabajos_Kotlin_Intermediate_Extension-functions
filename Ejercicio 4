@@ -1,0 +1,25 @@
+fun validarStock(solicitado: Int?, disponible: Int?): Int {
+    if (solicitado == null) {
+        return -1
+    }
+
+    if (disponible == null) {
+        return -1
+    }
+
+    if (solicitado < 0) {
+        return -1
+    }
+
+    if (solicitado > disponible) {
+        return -1
+    }
+
+    return solicitado
+}
+
+fun main() {
+    println(validarStock(5, 10))
+    println(validarStock(null, 10))
+    println(validarStock(-2, 10))
+}
