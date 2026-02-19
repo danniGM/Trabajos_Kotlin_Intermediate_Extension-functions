@@ -1,0 +1,35 @@
+data class User(val name: String?)
+
+fun getNotificationPreferences(user: Any, emailEnabled: Boolean, smsEnabled: Boolean): List<String> {
+    if (user !is User) {
+        return emptyList() // O una lista vacia
+    }
+
+    var finalName = user.name
+    if (finalName == null) {
+        finalName = "Guest"
+    }
+    
+    val notifications = mutableListOf<String>()
+
+    if (emailEnabled) {
+        notifications.add("Email Notifications enabled for $finalName")
+    }
+
+    if (smsEnabled) {
+        notifications.add("SMS Notifications enabled for $finalName")
+    }
+
+    return notifications
+}
+
+fun main() {
+    val user1 = User("Alice")
+    val user2 = User(null)
+    val invalidUser = "NotAUser"
+
+    // Pruebas
+    println(getNotificationPreferences(user1, true, false))
+    println(getNotificationPreferences(user2, false, true))
+    println(getNotificationPreferences(invalidUser, true, true))
+}
