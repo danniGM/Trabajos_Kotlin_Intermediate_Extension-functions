@@ -1,0 +1,23 @@
+data class User(val username: String, val isActive: Boolean)
+
+fun getActiveUsernames(usuarios: List<User>): List<String> {
+    val listaNombres = mutableListOf<String>()
+
+    for (usuario in usuarios) {
+        if (usuario.isActive) {
+            listaNombres.add(usuario.username)
+        }
+    }
+
+    return listaNombres
+}
+
+fun main() {
+    val todosLosUsuarios = listOf(
+        User("alice123", true),
+        User("bob_the_builder", false),
+        User("charlie99", true)
+    )
+
+    println(getActiveUsernames(todosLosUsuarios))
+}
