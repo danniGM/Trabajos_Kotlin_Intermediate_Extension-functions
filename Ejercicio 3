@@ -1,0 +1,16 @@
+interface Vehicle {
+    val name: String
+    fun move(): String
+}
+
+object FlyingSkateboard : Vehicle {
+    override val name = "Patineta voladoresa"
+    override fun move() = "Glides through the air with a hover engine"
+
+   fun fly(): String = "Woooooooo mi compaaaaa"
+}
+
+fun main() {
+    println("${FlyingSkateboard.name}: ${FlyingSkateboard.move()}")
+    println("${FlyingSkateboard.name}: ${FlyingSkateboard.fly()}")
+}
