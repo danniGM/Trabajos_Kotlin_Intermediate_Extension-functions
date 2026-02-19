@@ -1,0 +1,30 @@
+sealed class Status {
+    data object Loading : Status()
+    data class Error(val problem: Problem) : Status() {
+        enum class Problem {
+            NETWORK,
+            TIMEOUT,
+            UNKNOWN
+        }
+    }
+
+    data class OK(val data: List<String>) : Status()
+}
+
+fun handleStatus(status: Status) {
+    when (status) {
+        is Status.Loading -> println("Cargando...")
+        is Status.OK -> println("Dato recivido: ${status.data}")
+        is Status.Error -> when (status.problem) {
+            Status.Error.Problem.NETWORK -> println("Red en uso")
+            Status.Error.Problem.TIMEOUT -> println("Limite de tiempo exedido")
+            Status.Error.Problem.UNKNOWN -> println("A ocurrido un Error desconocido ")
+        }
+    }
+}
+fun main() {
+    val status1: Status = Status.Error(Status.Error.Problem.NETWORK)
+    val status2: Status = Status.OK(listOf("Data1", "Data2"))
+    handleStatus(status1)
+    handleStatus(status2)
+}
